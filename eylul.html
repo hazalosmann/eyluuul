@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170814">
+<title>İyi ki Doğdun Aşkım ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #55182f, #170814 75%);
+  color: #fff0f6;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 30px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.cake {
+  font-size: 105px;
+  animation: float 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px #ff7bac66);
+}
+
+.candle {
+  font-size: 30px;
+  margin-top: -10px;
+  animation: glow 1s infinite alternate;
+}
+
+h1 {
+  color: #ffb2d0;
+  font-size: clamp(25px, 7vw, 38px);
+}
+
+p {
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 28px;
+  border: 1px solid #ffb5d2;
+  border-radius: 30px;
+  background: #b72e68;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .7;
+}
+
+.hint {
+  font-size: 13px;
+  color: #e8a9c2;
+}
+
+#heart {
+  width: min(96vw, 480px);
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  gap: 1px;
+  align-items: center;
+  justify-items: center;
+}
+
+.loveWord {
+  width: 100%;
+  min-width: 0;
+  font-family: Arial, sans-serif;
+  font-size: clamp(6px, 1.65vw, 9px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  color: #ff9fc8;
+  text-shadow: 0 0 7px #ff3e91;
+  opacity: 0;
+  transform: scale(.3);
+  animation: appear .45s ease forwards;
+}
+
+.loveTitle {
+  margin-bottom: 20px;
+}
+
+#progress {
+  color: #ffb5d2;
+  font-size: 14px;
+}
+
+#finalMessage {
+  max-width: 360px;
+  padding: 0 12px;
+  animation: appear 1.2s ease forwards;
+}
+
+#finalMessage h2 {
+  color: #ff9fc8;
+  font-size: 28px;
+}
+
+#finalMessage p {
+  font-size: 18px;
+}
+
+.heartEmoji {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 5;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 3px #ff8bba); }
+  to { filter: drop-shadow(0 0 15px #ff4c99); }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .loveWord {
+    font-size: 5.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cake, .candle {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section id="birthday" class="screen">
+  <div class="cake">🎂</div>
+  <div class="candle">🕯️</div>
+
+  <h1>İyi ki doğdun sevgilim ❤️</h1>
+  <p>Bugün senin günün aşkım...</p>
+  <p>Bir dilek tut ve mumu üfle. ✨</p>
+
+  <button id="blowButton">Mumu üfle 💨</button>
+  <p class="hint">Senin için küçücük bir sürprizim var 💌</p>
+</section>
+
+<section id="loveScreen" class="screen hidden">
+  <h1 class="loveTitle">Sana her dilde aşığım ❤️</h1>
+  <div id="heart"></div>
+  <p id="progress">Kalbim seninle doluyor... 💗</p>
+
+  <div id="finalMessage" class="hidden">
+    <h2>İyi ki doğdun aşkım! 🎂❤️</h2>
+    <p>
+      Dünyada kaç dil varsa, her birinde seni seviyorum.
+      İyi ki hayatımdasın, iyi ki benimlesin.
+      <br><br>
+      Seni çok seviyorum. ❤️
+    </p>
+  </div>
+</section>
+
+<script>
+const phrases = [
+["Türkçe","Seni seviyorum"],
+["İngilizce","I love you"],
+["Almanca","Ich liebe dich"],
+["Fransızca","Je t’aime"],
+["İspanyolca","Te amo"],
+["İtalyanca","Ti amo"],
+["Portekizce","Eu te amo"],
+["Felemenkçe","Ik hou van jou"],
+["İsveççe","Jag älskar dig"],
+["Norveççe","Jeg elsker deg"],
+["Danca","Jeg elsker dig"],
+["Fince","Rakastan sinua"],
+["İzlandaca","Ég elska þig"],
+["İrlandaca","Tá grá agam duit"],
+["İskoç Galcesi","Tha gaol agam ort"],
+["Galce","Rwy'n dy garu di"],
+["Lehçe","Kocham cię"],
+["Çekçe","Miluji tě"],
+["Slovakça","Ľúbim ťa"],
+["Slovence","Ljubim te"],
+["Hırvatça","Volim te"],
+["Sırpça","Волим те"],
+["Boşnakça","Volim te"],
+["Bulgarca","Обичам те"],
+["Makedonca","Те сакам"],
+["Rusça","Я тебя люблю"],
+["Ukraynaca","Я тебе кохаю"],
+["Belarusça","Я цябе кахаю"],
+["Yunanca","Σ' αγαπώ"],
+["Arnavutça","Të dua"],
+["Romence","Te iubesc"],
+["Macarca","Szeretlek"],
+["Litvanca","Aš tave myliu"],
+["Letonca","Es tevi mīlu"],
+["Estonca","Ma armastan sind"],
+["Baskça","Maite zaitut"],
+["Katalanca","T'estimo"],
+["Galiçyaca","Quérote"],
+["Latince","Te amo"],
+["Esperanto","Mi amas vin"],
+["Arapça","أحبك"],
+["İbranice","אני אוהב אותך"],
+["Farsça","دوستت دارم"],
+["Kürtçe","Ez ji te hez dikim"],
+["Hintçe","मैं तुमसे प्यार करता हूँ"],
+["Urduca","میں تم سے محبت کرتا ہوں"],
+["Bengalce","আমি তোমাকে ভালোবাসি"],
+["Pencapça","ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ"],
+["Guceratça","હું તને પ્રેમ કરું છું"],
+["Marathice","मी तुझ्यावर प्रेम करतो"],
+["Nepalce","म तिमीलाई माया गर्छु"],
+["Seylanca","මම ඔයාට ආදරෙයි"],
+["Tamilce","நான் உன்னை காதலிக்கிறேன்"],
+["Teluguca","నేను నిన్ను ప్రేమిస్తున్నాను"],
+["Kannadaca","ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ"],
+["Malayalamca","ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു"],
+["Tayca","ฉันรักคุณ"],
+["Vietnamca","Anh yêu em"],
+["Endonezce","Aku cinta kamu"],
+["Malayca","Saya cintakan awak"],
+["Filipince","Mahal kita"],
+["Çince","我爱你"],
+["Japonca","愛してる"],
+["Korece","사랑해"],
+["Moğolca","Би чамд хайртай"],
+["Svahili","Nakupenda"],
+["Afrikaanca","Ek is lief vir jou"],
+["Yorubaca","Mo nifẹ rẹ"],
+["Zuluca","Ngiyakuthanda"],
+["Somalice","Waan ku jeclahay"],
+["Amharca","እወድሃለሁ"],
+["Ermenice","Ես քեզ սիրում եմ"],
+["Gürcüce","მიყვარხარ"],
+["Azerice","Mən səni sevirəm"],
+["Kazakça","Мен сені сүйемін"],
+["Özbekçe","Men seni sevaman"]
+];
+
+const birthday = document.getElementById("birthday");
+const loveScreen = document.getElementById("loveScreen");
+const button = document.getElementById("blowButton");
+const heart = document.getElementById("heart");
+const progress = document.getElementById("progress");
+const finalMessage = document.getElementById("finalMessage");
+
+let started = false;
+
+button.addEventListener("click", async () => {
+  if (started) return;
+  started = true;
+  button.disabled = true;
+  button.textContent = "Mum söndü ❤️";
+
+  await new Promise(resolve => setTimeout(resolve, 900));
+
+  birthday.classList.add("hidden");
+  loveScreen.classList.remove("hidden");
+
+  // Matematiksel kalp biçiminin içindeki hücreleri hesapla.
+  const rows = 23;
+  const cols = 31;
+  const cells = [];
+
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const nx = (x - (cols - 1) / 2) / (cols / 2);
+      const ny = (y - (rows - 1) / 2) / (rows / 2);
+      const X = nx * 1.15;
+      const Y = -ny * 1.15 + 0.12;
+
+      const equation =
+        Math.pow(X * X + Y * Y - 1, 3) -
+        X * X * Y * Y * Y;
+
+      if (equation <= 0) cells.push({x, y});
+    }
+  }
+
+  // Kalbin tümüne 75 ifadeyi farklı noktalara dağıt.
+  const slots = Array(rows * cols).fill(null);
+
+  phrases.forEach((phrase, i) => {
+    const index = Math.floor(
+      (i + 0.5) * cells.length / phrases.length
+    );
+    const cell = cells[Math.min(index, cells.length - 1)];
+    slots[cell.y * cols + cell.x] = i;
+  });
+
+  heart.style.gridTemplateColumns =
+    `repeat(${cols}, minmax(0, 1fr))`;
+
+  slots.forEach((phraseIndex) => {
+    const span = document.createElement("span");
+
+    if (phraseIndex === null) {
+      span.style.visibility = "hidden";
+      span.textContent = "♥";
+      span.setAttribute("aria-hidden", "true");
+    } else {
+      span.className = "loveWord";
+      span.textContent = phrases[phraseIndex][1];
+      span.title = phrases[phraseIndex][0];
+      span.style.animationDelay = `${phraseIndex * 0.5}s`;
+    }
+
+    heart.appendChild(span);
+  });
+
+  // Kalp tamamlanınca son mesaj ve uçuşan kalpler.
+  const duration = phrases.length * 500 + 1000;
+
+  setTimeout(() => {
+    progress.textContent = "Kalbimin her köşesinde sen varsın ❤️";
+    finalMessage.classList.remove("hidden");
+
+    for (let i = 0; i < 24; i++) {
+      setTimeout(() => {
+        const item = document.createElement("span");
+        item.className = "heartEmoji";
+        item.textContent = ["❤️", "💕", "💗", "💖"][i % 4];
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.animationDuration = (3 + Math.random() * 3) + "s";
+        item.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(item);
+        setTimeout(() => item.remove(), 6500);
+      }, i * 180);
+    }
+  }, duration);
+});
+</script>
+
+</body>
+</html>
